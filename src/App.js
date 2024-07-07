@@ -1,7 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
-import './static/css/heroic-features.css'
-import './static/vendor/bootstrap/css/bootstrap.min.css'
+import logo from "./logo.svg"
+import "./App.css"
+// import './static/css/heroic-features.css'
+// import './static/vendor/bootstrap/css/bootstrap.min.css'
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
