@@ -1,16 +1,9 @@
 import { useEffect } from "react"
 import $ from "jquery"
-import { Dropdown } from "bootstrap"
+import { Dropdown, Nav, Navbar, NavDropdown } from "react-bootstrap"
 
 function NavMenu() {
-  useEffect(() => {
-    const dropdownElementList = [].slice.call(
-      document.querySelectorAll(".dropdown-toggle")
-    )
-    dropdownElementList.map(function (dropdownToggleEl) {
-      return new Dropdown(dropdownToggleEl)
-    })
-  }, [])
+  useEffect(() => {}, [])
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -43,32 +36,17 @@ function NavMenu() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarResponsive">
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item dropdown">
-              <a
-                href="#"
-                className="nav-link dropdown-toggle"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Admin
-              </a>
-              <div
-                className="dropdown-menu"
-                aria-labelledby="navbarDropDownMenuLink"
-              >
-                <a className="dropdown-item">Products</a>
-                <a className="dropdown-item">Usuarios</a>
-                <a className="dropdown-item">Orders</a>
-                <a className="dropdown-item">Salir</a>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <Navbar.Collapse id="navbar-dark-example">
+          <Nav>
+            <NavDropdown id="nav-dropdown-dark-example" title="Admin">
+              <NavDropdown.Item href="#action/3.1">Products</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Users</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Orders</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">Salir</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
       </div>
     </nav>
   )
