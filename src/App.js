@@ -1,7 +1,8 @@
 import logo from "./logo.svg"
 import "./App.css"
-// import './static/css/heroic-features.css'
+import "./static/css/heroic-features.css"
 // import './static/vendor/bootstrap/css/bootstrap.min.css'
+import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
   return (

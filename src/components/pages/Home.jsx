@@ -1,33 +1,39 @@
 import Footer from "../organisms/Footer"
 import Header from "../organisms/Header"
 import NavMenu from "../organisms/NavMenu"
-// import $ from 'jquery'
-import "bootstrap/dist/css/bootstrap.min.css"
 import "../../static/css/heroic-features.css"
-import "bootstrap/dist/js/bootstrap.bundle"
+import { useEffect } from "react"
+import useFetch from "../../hooks/useFetch"
+import { API_URL } from "../../constants/env"
 
-// $(document).ready(function () {
-//     console.log('jQuery is ready')
-//   })
+const Home = () => {
+  const { data, loading, error } = useFetch("")
 
-function Home() {
+  if (loading) return <div>cargando</div>
   return (
     <>
       <NavMenu />
       <div className="container">
         <Header />
         <div className="row text-center">
-          <div className="col-lg-3 col-md-6 mb-4">
-            <div className="card h-100">
-              <img className="card-img-top" alt="" />
-              <div className="card-body">
-                <p className="card-text">titulo producto</p>
-              </div>
-              <div className="card-footer">
-                <a className="btn btn-success">Ver producto</a>
+          {data.map((product) => (
+            <div className="col-lg-3 col-md-6 mb-4" key={product.id_product}>
+              <div className="card h-100">
+                <img className="card-img-top" alt="" />
+                <div className="card-body">
+                  <p className="card-text">{product.name}</p>
+                </div>
+                <div className="card-footer">
+                  <a
+                    href={API_URL + "/product/" + product.id_product}
+                    className="btn btn-success"
+                  >
+                    Ver producto
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
       <Footer />

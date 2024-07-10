@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import $ from "jquery"
 import { Dropdown, Nav, Navbar, NavDropdown } from "react-bootstrap"
 
 function NavMenu() {
@@ -39,7 +38,9 @@ function NavMenu() {
         <Navbar.Collapse id="navbar-dark-example">
           <Nav>
             <NavDropdown id="nav-dropdown-dark-example" title="Admin">
-              <NavDropdown.Item href="#action/3.1">Products</NavDropdown.Item>
+              <NavDropdown.Item href="admin/products">
+                Products
+              </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Users</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Orders</NavDropdown.Item>
               <NavDropdown.Divider />
