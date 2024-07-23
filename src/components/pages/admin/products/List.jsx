@@ -1,11 +1,26 @@
+import { Link, redirect, useNavigate } from "react-router-dom"
 import { API_URL } from "../../../../constants/env"
 import useFetch from "../../../../hooks/useFetch"
 import Footer from "../../../organisms/Footer"
 import NavMenu from "../../../organisms/NavMenu"
+import axios from "axios"
 
 const List = () => {
   const { data, loading, error } = useFetch("products")
-  if (loading) return <div>cargando</div>
+  const navigate = useNavigate()
+
+  const handleDelete = (id_product) => {
+    axios({
+      method: "DELETE",
+      url: `${API_URL}/products/delete/` + id_product,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).finally(() => {
+      console.log("deleted")
+      window.location.reload()
+    })
+  }
   return (
     <>
       <NavMenu />
@@ -28,6 +43,12 @@ const List = () => {
               Crear Producto
             </a>
             <h2>Productos</h2>
+            {loading && <div className="alert alert-info">Cargando</div>}
+            {error && (
+              <div className="alert alert-danger">
+                Error al cargar los productos
+              </div>
+            )}
             <table className="table">
               <thead>
                 <tr>
@@ -40,24 +61,24 @@ const List = () => {
                 </tr>
               </thead>
               <tbody>
-                {data.map((product) => (
+                {data?.map((product) => (
                   <tr key={product.id_product}>
                     <td>{product.name}</td>
                     <td>{product.description}</td>
                     <td>{product.amount}</td>
                     <td>{product.price}</td>
                     <td>
-                      <a
+                      <Link
                         className="btn btn-warning"
-                        href={API_URL + "/product/edit/" + product.id_product}
+                        to={"/product/edit/" + product.id_product}
                       >
                         Editar
-                      </a>{" "}
+                      </Link>{" "}
                     </td>
                     <td>
                       <a
                         className="btn btn-danger"
-                        href={API_URL + "/product/delete/" + product.id_product}
+                        onClick={() => handleDelete(product.id_product)}
                       >
                         Eliminar
                       </a>{" "}

@@ -8,7 +8,9 @@ function NavMenu() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container">
-        <a className="navbar-brand">Spring eCommerce</a>
+        <Link className="navbar-brand" to="/">
+          Spring eCommerce
+        </Link>
         <form
           className="d-flex gap-3 form-inline my-2 my-lg-0"
           method="get"
@@ -54,9 +56,9 @@ function NavMenu() {
           <Navbar.Collapse id="navbar-dark-example">
             <Nav>
               <NavDropdown id="nav-dropdown-dark-example" title="Admin">
-                <NavDropdown.Item href="admin/products">
+                <Link className="dropdown-item" to="/admin/products">
                   Products
-                </NavDropdown.Item>
+                </Link>
                 <NavDropdown.Item href="#action/3.2">Users</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Orders</NavDropdown.Item>
                 <NavDropdown.Divider />

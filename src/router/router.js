@@ -4,6 +4,7 @@ import List from "../components/pages/admin/products/List"
 import ProductPage from "../components/pages/ProductPage"
 import ProductSearch from "../components/pages/ProductSearch"
 import Login from "../components/pages/Login"
+import ProductEdit from "../components/pages/admin/products/Edit"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "search",
         element: <ProductSearch />,
+      },
+      {
+        path: "edit/:id",
+        element: <ProductEdit />,
       },
     ],
   },
