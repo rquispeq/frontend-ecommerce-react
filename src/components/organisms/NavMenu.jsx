@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 function NavMenu() {
   const isLogged = localStorage.getItem("token") ? true : false
+  const isAdmin = localStorage.getItem("type") === "admin" ? true : false
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -59,7 +60,7 @@ function NavMenu() {
               </li>
             </ul>
           </div>
-        ) : (
+        ) : isAdmin ? (
           <Navbar.Collapse id="navbar-dark-example">
             <Nav>
               <NavDropdown id="nav-dropdown-dark-example" title="Admin">
@@ -79,6 +80,26 @@ function NavMenu() {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
+        ) : (
+          <div className="collapse navbar-collapse" id="navbarResponsive">
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link to="/user/orders" className="nav-link">
+                  Compras
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/cart" className="nav-link">
+                  Carrito
+                </Link>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link pe-auto" onClick={handleLogout}>
+                  Salir
+                </a>
+              </li>
+            </ul>
+          </div>
         )}
       </div>
     </nav>
