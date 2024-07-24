@@ -1,14 +1,24 @@
 import axios from "axios"
 import NavMenu from "../organisms/NavMenu"
-import { Navigate, redirect, useNavigate } from "react-router-dom"
+import {
+  Link,
+  Navigate,
+  redirect,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom"
 import { useEffect, useState } from "react"
 import { API_URL } from "../../constants/env"
+import Footer from "../organisms/Footer"
 
 const Login = () => {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
   const [isLogged, setIsLogged] = useState(false)
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const register = searchParams.get("register")
+  console.log("register", register)
 
   const handleLogin = (e) => {
     e.preventDefault()
@@ -18,6 +28,7 @@ const Login = () => {
       .post(`${API_URL}/auth/login`, { email, password })
       .then((resp) => {
         localStorage.setItem("token", resp.data.token)
+        localStorage.setItem("type", resp.data.type)
         navigate("/")
       })
       .catch((err) => {
@@ -46,6 +57,11 @@ const Login = () => {
             </div>
           </div>
         </div>
+        {register && (
+          <div className="alert alert-success" role="alert">
+            Registro exitoso, ahora puede iniciar sesión
+          </div>
+        )}
         <form onSubmit={handleLogin} method="post">
           <div className="form-group">
             <label htmlFor="email"> Email: </label>
@@ -81,10 +97,11 @@ const Login = () => {
             </div>
           </div>
         </form>
-        <a href="@{/user/register}" className="card-link">
+        <Link to="/register" className="card-link">
           Si aún no tiene cuenta aqui puede registrarse
-        </a>
+        </Link>
       </div>
+      <Footer />
     </>
   )
 }
