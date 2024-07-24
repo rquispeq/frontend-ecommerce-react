@@ -3,6 +3,7 @@ import useAuthFetch from "../../../../hooks/useAuthFetch"
 import NavMenu from "../../../organisms/NavMenu"
 import { API_URL } from "../../../../constants/env"
 import { useEffect, useState } from "react"
+import Footer from "../../../organisms/Footer"
 
 const Create = () => {
   const [isCreated, setIsCreated] = useState(false)
@@ -149,6 +150,7 @@ const Create = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

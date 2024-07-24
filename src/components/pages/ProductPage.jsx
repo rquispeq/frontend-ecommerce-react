@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import useFetch from "../../hooks/useFetch"
 import NavMenu from "../organisms/NavMenu"
 import { useEffect, useState } from "react"
+import Footer from "../organisms/Footer"
 
 const ProductPage = (props) => {
   const [amount, setAmount] = useState(1)
@@ -84,6 +85,7 @@ const ProductPage = (props) => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

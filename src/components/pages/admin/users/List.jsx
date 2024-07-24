@@ -1,4 +1,5 @@
 import useAuthFetch from "../../../../hooks/useAuthFetch"
+import Footer from "../../../organisms/Footer"
 import NavMenu from "../../../organisms/NavMenu"
 
 const List = () => {
@@ -42,6 +43,7 @@ const List = () => {
           </tbody>
         </table>
       </div>
+      <Footer />
     </>
   )
 }

@@ -4,6 +4,7 @@ import Header from "../organisms/Header"
 
 import NavMenu from "../organisms/NavMenu"
 import { BASE_URL } from "../../constants/env"
+import Footer from "../organisms/Footer"
 
 const ProductSearch = () => {
   const [searchParams] = useSearchParams()
@@ -52,6 +53,7 @@ const ProductSearch = () => {
           )}
         </div>
       </div>
+      <Footer />
     </>
   )
 }

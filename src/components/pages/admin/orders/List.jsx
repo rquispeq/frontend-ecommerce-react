@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import NavMenu from "../../../organisms/NavMenu"
 import useAuthFetch from "../../../../hooks/useAuthFetch"
+import Footer from "../../../organisms/Footer"
 
 const List = () => {
   const { data: orders, loading, error } = useAuthFetch("admin/orders")
@@ -58,6 +59,7 @@ const List = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
