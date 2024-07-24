@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import useFetch from "../../hooks/useFetch"
 import NavMenu from "../organisms/NavMenu"
 import { useEffect, useState } from "react"
@@ -8,6 +8,7 @@ const ProductPage = (props) => {
   const [amount, setAmount] = useState(1)
 
   const params = useParams()
+  const navigate = useNavigate()
 
   const {
     data: product,
@@ -15,22 +16,22 @@ const ProductPage = (props) => {
     error,
   } = useFetch("products/show/" + params.id)
 
-  const handleAddToCart = (e) => {
+  const handleAddToCart = (e, product) => {
     e.preventDefault()
     const idProduct = e.target.idProduct.value
     const amount = e.target.amount.value
-    const data = { idProduct, amount }
+    const data = { idProduct, amount, price: product.price, name: product.name }
     const cart = JSON.parse(localStorage.getItem("cart"))
     const existingProduct = cart.find((item) => item.idProduct === idProduct)
     if (existingProduct) {
       existingProduct.amount =
         parseInt(existingProduct.amount) + parseInt(amount)
-      console.log("existingProduct", existingProduct)
     } else {
       cart.push(data)
     }
 
     localStorage.setItem("cart", JSON.stringify(cart))
+    navigate("/cart")
   }
 
   return (
@@ -67,7 +68,7 @@ const ProductPage = (props) => {
                   </a>
                 </div>
                 <div className="col-lg-6">
-                  <form onSubmit={(e) => handleAddToCart(e)}>
+                  <form onSubmit={(e) => handleAddToCart(e, product)}>
                     <input
                       type="hidden"
                       value={product.id_product}
