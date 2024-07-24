@@ -8,6 +8,7 @@ import ProductEdit from "../components/pages/admin/products/Edit"
 import ProductCreate from "../components/pages/admin/products/Create"
 import UserList from "../components/pages/admin/users/List"
 import OrderList from "../components/pages/admin/orders/List"
+import Register from "../components/pages/Register"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <Login />,
+  },
+  {
+    path: "register",
+    element: <Register />,
   },
 ])
 export default router
