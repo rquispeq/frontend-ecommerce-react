@@ -5,6 +5,10 @@ import App from "./App"
 import { RouterProvider } from "react-router-dom"
 import router from "./router/router"
 
+if (!localStorage.getItem("cart")) {
+  localStorage.setItem("cart", JSON.stringify([]))
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
