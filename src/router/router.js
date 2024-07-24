@@ -7,6 +7,7 @@ import Login from "../components/pages/Login"
 import ProductEdit from "../components/pages/admin/products/Edit"
 import ProductCreate from "../components/pages/admin/products/Create"
 import UserList from "../components/pages/admin/users/List"
+import OrderList from "../components/pages/admin/orders/List"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <UserList />,
+      },
+      {
+        path: "orders",
+        element: <OrderList />,
       },
     ],
   },

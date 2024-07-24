@@ -62,7 +62,9 @@ function NavMenu() {
                 <Link className="dropdown-item" to="/admin/users">
                   Users
                 </Link>
-                <NavDropdown.Item href="#action/3.3">Orders</NavDropdown.Item>
+                <Link className="dropdown-item" to="/admin/orders">
+                  Orders
+                </Link>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">Salir</NavDropdown.Item>
               </NavDropdown>
