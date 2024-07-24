@@ -1,10 +1,17 @@
 import { useEffect } from "react"
 import { Dropdown, Nav, Navbar, NavDropdown } from "react-bootstrap"
 import { BASE_URL } from "../../constants/env"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 function NavMenu() {
   const isLogged = localStorage.getItem("token") ? true : false
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    navigate("/")
+  }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container">
@@ -66,7 +73,9 @@ function NavMenu() {
                   Orders
                 </Link>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Salir</NavDropdown.Item>
+                <NavDropdown.Item onClick={handleLogout}>
+                  Salir
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
