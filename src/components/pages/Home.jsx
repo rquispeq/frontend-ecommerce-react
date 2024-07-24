@@ -32,7 +32,7 @@ const Home = () => {
                 </div>
                 <div className="card-footer">
                   <a
-                    href={BASE_URL + "/product/" + product.id_product}
+                    href={BASE_URL + "/products/" + product.id_product}
                     className="btn btn-success"
                   >
                     Ver producto
