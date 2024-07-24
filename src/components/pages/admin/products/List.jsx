@@ -38,10 +38,10 @@ const List = () => {
               <li className="breadcrumb-item active">Ver Productos</li>
             </ol>
 
-            <a className="btn btn-primary" href={API_URL + "product/create"}>
+            <Link className="btn btn-primary" to="/admin/products/create">
               {" "}
               Crear Producto
-            </a>
+            </Link>
             <h2>Productos</h2>
             {loading && <div className="alert alert-info">Cargando</div>}
             {error && (
@@ -70,7 +70,7 @@ const List = () => {
                     <td>
                       <Link
                         className="btn btn-warning"
-                        to={"/product/edit/" + product.id_product}
+                        to={"/admin/products/edit/" + product.id_product}
                       >
                         Editar
                       </Link>{" "}
