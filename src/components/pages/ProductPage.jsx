@@ -18,11 +18,17 @@ const ProductPage = (props) => {
 
   const handleAddToCart = (e, product) => {
     e.preventDefault()
-    const idProduct = e.target.idProduct.value
+    const id_product = e.target.id_product.value
     const amount = e.target.amount.value
-    const data = { idProduct, amount, price: product.price, name: product.name }
+    const data = {
+      id_product,
+      amount,
+      price: product.price,
+      name: product.name,
+      total: product.price * amount,
+    }
     const cart = JSON.parse(localStorage.getItem("cart"))
-    const existingProduct = cart.find((item) => item.idProduct === idProduct)
+    const existingProduct = cart.find((item) => item.id_product === id_product)
     if (existingProduct) {
       existingProduct.amount =
         parseInt(existingProduct.amount) + parseInt(amount)
@@ -72,7 +78,7 @@ const ProductPage = (props) => {
                     <input
                       type="hidden"
                       value={product.id_product}
-                      name="idProduct"
+                      name="id_product"
                     />
                     <h2 className="card-title">{product.name}</h2>
 

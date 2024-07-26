@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Footer from "../organisms/Footer"
 import NavMenu from "../organisms/NavMenu"
+import { Link } from "react-router-dom"
 
 const Cart = () => {
   const [cart, setCart] = useState([])
@@ -65,9 +66,9 @@ const Cart = () => {
                   <li>
                     <h5>{order.total}</h5>
                   </li>
-                  <a href="@{/order}" className="btn btn-dark">
+                  <Link to="/order" className="btn btn-dark">
                     Ver Orden
-                  </a>
+                  </Link>
                 </ul>
               </div>
             </div>
