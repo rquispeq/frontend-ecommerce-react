@@ -1,6 +1,10 @@
+import axios from "axios"
 import NavMenu from "../../organisms/NavMenu"
+import { API_URL } from "../../../constants/env"
+import { useNavigate } from "react-router-dom"
 
 const Order = () => {
+  const navigate = useNavigate()
   const user = {
     name: "User Name",
     email: " [email protected]",
@@ -8,6 +12,19 @@ const Order = () => {
   }
   const cart = JSON.parse(localStorage.getItem("cart"))
   let order = { total: 0 }
+
+  const handleSaveOrder = () => {
+    axios
+      .post(`${API_URL}/user/saveorder`, cart, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((resp) => {
+        localStorage.setItem("cart", JSON.stringify([]))
+        navigate("/orders")
+      })
+  }
   return (
     <>
       <NavMenu />
@@ -71,7 +88,7 @@ const Order = () => {
                   <li className="list-group-item">
                     <h5>Total: {order.total}</h5>
                   </li>
-                  <a href="@{saveOrder}" className="btn btn-dark">
+                  <a onClick={handleSaveOrder} className="btn btn-dark">
                     Generar
                   </a>
                 </ul>

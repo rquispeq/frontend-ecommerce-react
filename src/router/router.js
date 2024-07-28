@@ -11,6 +11,7 @@ import OrderList from "../components/pages/admin/orders/List"
 import Register from "../components/pages/Register"
 import Cart from "../components/pages/Cart"
 import Order from "../components/pages/user/Order"
+import UserOrderList from "../components/pages/user/orders/List"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
   {
     path: "order",
     element: <Order />,
+  },
+  {
+    path: "user/orders",
+    element: <UserOrderList />,
   },
 ])
 export default router
