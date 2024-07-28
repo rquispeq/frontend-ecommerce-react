@@ -22,7 +22,7 @@ const Order = () => {
       })
       .then((resp) => {
         localStorage.setItem("cart", JSON.stringify([]))
-        navigate("/orders")
+        navigate("/user/orders")
       })
   }
   return (
