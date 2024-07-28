@@ -52,7 +52,10 @@ const List = () => {
                           <td>{formattedDate}</td>
                           <td>{order.total}</td>
                           <td>
-                            <Link href="" className="btn btn-success">
+                            <Link
+                              to={"/user/orders/details/" + order.id_order}
+                              className="btn btn-success"
+                            >
                               Ver Detalle
                             </Link>
                           </td>

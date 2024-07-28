@@ -94,7 +94,11 @@ function NavMenu() {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link pe-auto" onClick={handleLogout}>
+                <a
+                  className="nav-link"
+                  style={{ cursor: "pointer" }}
+                  onClick={handleLogout}
+                >
                   Salir
                 </a>
               </li>
