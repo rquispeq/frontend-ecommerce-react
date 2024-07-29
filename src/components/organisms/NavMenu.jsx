@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { Dropdown, Nav, Navbar, NavDropdown } from "react-bootstrap"
 import { BASE_URL } from "../../constants/env"
 import { Link, useNavigate } from "react-router-dom"
+import SearchProduct from "../molecules/SearchProduct"
 
 function NavMenu() {
   const isLogged = localStorage.getItem("token") ? true : false
@@ -19,26 +20,7 @@ function NavMenu() {
         <Link className="navbar-brand" to="/">
           Spring eCommerce
         </Link>
-        <form
-          className="d-flex gap-3 form-inline my-2 my-lg-0"
-          method="get"
-          action={BASE_URL + "/product/search"}
-        >
-          <input
-            className="form-control mr-sm-2"
-            type="search"
-            placeholder="Buscar"
-            aria-label="Search"
-            name="name"
-            autoComplete="off"
-          />
-          <button
-            className="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-          >
-            Buscar
-          </button>
-        </form>
+        <SearchProduct />
         <button
           className="navbar-toggler"
           type="button"
