@@ -4,6 +4,7 @@ import NavMenu from "../organisms/NavMenu"
 import { useEffect, useState } from "react"
 import Footer from "../organisms/Footer"
 import BreadCrumb from "../molecules/Breadcrumb"
+import { API_URL } from "../../constants/env"
 
 const ProductPage = (props) => {
   const [amount, setAmount] = useState(1)
@@ -64,7 +65,7 @@ const ProductPage = (props) => {
                     {" "}
                     <img
                       className="img-fluid rounded"
-                      src="@{/images/{img} (img=${product.image})  }"
+                      src={API_URL + "/images/" + product.image}
                       alt=""
                     />
                   </a>
