@@ -18,7 +18,6 @@ const Login = () => {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const register = searchParams.get("register")
-  console.log("register", register)
 
   const handleLogin = (e) => {
     e.preventDefault()

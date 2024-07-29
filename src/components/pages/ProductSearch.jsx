@@ -10,7 +10,6 @@ import ProductList from "../organisms/ProductList"
 const ProductSearch = () => {
   const [searchParams] = useSearchParams()
   const name = searchParams.get("name")
-  //   console.log("name", searchParams.get("name"))
   const { data, loading, error } = useFetch("products/search?name=" + name)
   return (
     <>

@@ -37,7 +37,6 @@ const Edit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("submit")
     const updateData = new FormData()
     updateData.append("id_product", formData.id_product)
     updateData.append("name", formData.name)

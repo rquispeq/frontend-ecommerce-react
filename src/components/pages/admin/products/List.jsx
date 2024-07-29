@@ -18,7 +18,6 @@ const List = () => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     }).finally(() => {
-      console.log("deleted")
       window.location.reload()
     })
   }

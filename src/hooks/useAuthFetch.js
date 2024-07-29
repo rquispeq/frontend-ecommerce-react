@@ -7,7 +7,6 @@ const useAuthFetch = (endpoint, method = "GET", headers = {}) => {
   const [error, setError] = useState()
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    console.log("products endpoint", method)
     axios({
       method: "GET",
       url: `${API_URL}/${endpoint}`,
