@@ -4,6 +4,7 @@ import useFetch from "../../../../hooks/useFetch"
 import Footer from "../../../organisms/Footer"
 import NavMenu from "../../../organisms/NavMenu"
 import axios from "axios"
+import BreadCrumb from "../../../molecules/Breadcrumb"
 
 const List = () => {
   const { data, loading, error } = useFetch("products")
@@ -30,14 +31,7 @@ const List = () => {
             <h1 className="mt-4 mb-3">
               Spring eCommerce <small>Productos</small>
             </h1>
-
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <a href="index.html">Home</a>
-              </li>
-              <li className="breadcrumb-item active">Ver Productos</li>
-            </ol>
-
+            <BreadCrumb items={[{ label: "Ver Productos", active: true }]} />
             <Link className="btn btn-primary" to="/admin/products/create">
               {" "}
               Crear Producto

@@ -1,4 +1,5 @@
 import useAuthFetch from "../../../../hooks/useAuthFetch"
+import BreadCrumb from "../../../molecules/Breadcrumb"
 import Footer from "../../../organisms/Footer"
 import NavMenu from "../../../organisms/NavMenu"
 
@@ -12,12 +13,7 @@ const List = () => {
           Spring eCommerce <small>Usuarios</small>
         </h1>
 
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <a href="@{/}">Home</a>
-          </li>
-          <li className="breadcrumb-item active">Ver Usuarios</li>
-        </ol>
+        <BreadCrumb items={[{ label: "Ver Usuarios", active: true }]} />
         <h2>Usuarios</h2>
         {loading && <div className="alert alert-info">Cargando</div>}
         {error && (

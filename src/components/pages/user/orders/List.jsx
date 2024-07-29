@@ -3,6 +3,7 @@ import Footer from "../../../organisms/Footer"
 import NavMenu from "../../../organisms/NavMenu"
 import useAuthFetch from "../../../../hooks/useAuthFetch"
 import { parseDate } from "../../../../helpers/dateEcommerce"
+import BreadCrumb from "../../../molecules/Breadcrumb"
 
 const List = () => {
   const { data: orders, loading, error } = useAuthFetch("user/shop")
@@ -15,12 +16,7 @@ const List = () => {
           Spring eCommerce <small>Compras</small>
         </h1>
 
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <a href="@{/}">Home</a>
-          </li>
-          <li className="breadcrumb-item active">Compras</li>
-        </ol>
+        <BreadCrumb items={[{ label: "Compras", active: true }]} />
 
         {loading && <div className="alert alert-info">Cargando</div>}
         {error && (

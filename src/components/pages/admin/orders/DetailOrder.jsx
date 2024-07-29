@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import useAuthFetch from "../../../../hooks/useAuthFetch"
 import Footer from "../../../organisms/Footer"
 import NavMenu from "../../../organisms/NavMenu"
+import BreadCrumb from "../../../molecules/Breadcrumb"
 
 const DetailOrder = () => {
   const params = useParams()
@@ -18,15 +19,12 @@ const DetailOrder = () => {
           Spring eCommerce <small>Detalles</small>
         </h1>
 
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <a href="index.html">Home</a>
-          </li>
-          <li className="breadcrumb-item">
-            <a href="compras.html">Compras</a>
-          </li>
-          <li className="breadcrumb-item active">Detalle de Compra</li>
-        </ol>
+        <BreadCrumb
+          items={[
+            { label: "Compras", href: "/admin/orders" },
+            { label: "Detalle de Compra", active: true },
+          ]}
+        />
 
         {loading && <div className="alert alert-info">Cargando</div>}
 

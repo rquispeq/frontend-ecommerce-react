@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Footer from "../organisms/Footer"
 import NavMenu from "../organisms/NavMenu"
 import { Link } from "react-router-dom"
+import BreadCrumb from "../molecules/Breadcrumb"
 
 const Cart = () => {
   const [cart, setCart] = useState([])
@@ -17,12 +18,7 @@ const Cart = () => {
           Spring eCommerce <small>Carrito</small>
         </h1>
 
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <a>Home</a>
-          </li>
-          <li className="breadcrumb-item active">Carrito</li>
-        </ol>
+        <BreadCrumb items={[{ label: "Carrito", active: true }]} />
         {cart.length === 0 && (
           <div className="alert alert-info">Carrito vacío</div>
         )}

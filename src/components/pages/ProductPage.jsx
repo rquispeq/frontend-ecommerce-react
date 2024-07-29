@@ -3,6 +3,7 @@ import useFetch from "../../hooks/useFetch"
 import NavMenu from "../organisms/NavMenu"
 import { useEffect, useState } from "react"
 import Footer from "../organisms/Footer"
+import BreadCrumb from "../molecules/Breadcrumb"
 
 const ProductPage = (props) => {
   const [amount, setAmount] = useState(1)
@@ -48,12 +49,7 @@ const ProductPage = (props) => {
           Spring eCommerce <small>Producto</small>
         </h1>
 
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <a href="@{/}">Home</a>
-          </li>
-          <li className="breadcrumb-item active">Producto</li>
-        </ol>
+        <BreadCrumb items={[{ label: "Producto", active: true }]} />
         {loading && <div className="alert alert-info">Cargando</div>}
         {error && (
           <div className="alert alert-danger">Error al cargar el producto</div>
