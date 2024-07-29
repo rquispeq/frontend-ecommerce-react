@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import Footer from "../../../organisms/Footer"
 import NavMenu from "../../../organisms/NavMenu"
 import useAuthFetch from "../../../../hooks/useAuthFetch"
+import { parseDate } from "../../../../helpers/dateEcommerce"
 
 const List = () => {
   const { data: orders, loading, error } = useAuthFetch("user/shop")
@@ -41,11 +42,7 @@ const List = () => {
                   </thead>
                   <tbody>
                     {orders?.map((order) => {
-                      const date = new Date(order.created_date)
-                      const day = String(date.getDate()).padStart(2, "0")
-                      const month = String(date.getMonth() + 1).padStart(2, "0") // Los meses en JavaScript son de 0 a 11
-                      const year = date.getFullYear()
-                      const formattedDate = `${day}/${month}/${year}`
+                      const formattedDate = parseDate(order.created_date)
                       return (
                         <tr key={order.id_order}>
                           <td>{order.number}</td>

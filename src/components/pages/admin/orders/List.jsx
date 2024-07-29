@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import NavMenu from "../../../organisms/NavMenu"
 import useAuthFetch from "../../../../hooks/useAuthFetch"
 import Footer from "../../../organisms/Footer"
+import { parseDate } from "../../../../helpers/dateEcommerce"
 
 const List = () => {
   const { data: orders, loading, error } = useAuthFetch("admin/orders")
@@ -23,6 +24,7 @@ const List = () => {
         {error && (
           <div className="alert alert-danger">Error al cargar las ordenes</div>
         )}
+
         <div className="card mb-4">
           <div className="card-body">
             <div className="row">
@@ -38,19 +40,22 @@ const List = () => {
                   </thead>
                   <tbody>
                     {orders?.map((order) => {
-                      ;<tr>
-                        <td>{order.number}</td>
-                        <td>{order.created_date}</td>
-                        <td>{order.total}</td>
-                        <td>
-                          <Link
-                            to={"/admin/details/}" + order.id_order}
-                            className="btn btn-success"
-                          >
-                            Ver Detalle
-                          </Link>
-                        </td>
-                      </tr>
+                      const formattedDate = parseDate(order.created_date)
+                      return (
+                        <tr key={order.id_order}>
+                          <td>{order.number}</td>
+                          <td>{formattedDate}</td>
+                          <td>{order.total}</td>
+                          <td>
+                            <Link
+                              to={"/admin/orders/details/" + order.id_order}
+                              className="btn btn-success"
+                            >
+                              Ver Detalle
+                            </Link>
+                          </td>
+                        </tr>
+                      )
                     })}
                   </tbody>
                 </table>

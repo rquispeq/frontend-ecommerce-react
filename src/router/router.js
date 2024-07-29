@@ -13,6 +13,7 @@ import Cart from "../components/pages/Cart"
 import Order from "../components/pages/user/Order"
 import UserOrderList from "../components/pages/user/orders/List"
 import UserDetailOrderList from "../components/pages/user/detailorder/List"
+import AdminDetailOrderList from "../components/pages/admin/orders/DetailOrder"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "orders",
         element: <OrderList />,
+      },
+      {
+        path: "orders/details/:id",
+        element: <AdminDetailOrderList />,
       },
     ],
   },
