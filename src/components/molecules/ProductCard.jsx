@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { API_URL, BASE_URL } from "../../constants/env"
 
 function ProductCard({ product }) {
@@ -13,12 +14,12 @@ function ProductCard({ product }) {
           <p className="card-text">{product.name}</p>
         </div>
         <div className="card-footer">
-          <a
-            href={BASE_URL + "/products/" + product.id_product}
+          <Link
+            to={"/products/" + product.id_product}
             className="btn btn-success"
           >
             Ver producto
-          </a>
+          </Link>
         </div>
       </div>
     </div>

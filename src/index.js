@@ -2,7 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import "./index.css"
 import App from "./App"
-import { RouterProvider } from "react-router-dom"
+import { RouterProvider, HashRouter } from "react-router-dom"
 import router from "./router/router"
 
 if (!localStorage.getItem("cart")) {
